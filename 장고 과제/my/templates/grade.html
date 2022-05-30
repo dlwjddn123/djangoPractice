@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1>채점 하기</h1>
+    <br>
+    <hr>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {% for p in form %}
+            <li>{{p.description}}</li>
+            <li>{{p.choice1}}</li>
+            <li>{{p.choice2}}</li>
+            <li>{{p.choice3}}</li>
+            <li>{{p.choice4}}</li>
+            <li>{{p.choice5}}</li>
+            <p>정답 : {{p.answer}}</p>
+            <p>내가 쓴 답 : {{user.user_answers}}</p>
+        {% endfor %}
+
+        <input type="submit" value="제출"> 
+    </form>
+    <a href="{% url 'home' %}">홈으로</a>
+{% endblock %}

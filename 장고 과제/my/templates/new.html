@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>문제 출제하기</h1>
+    <br>
+    <hr>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="등록"> 
+    </form>
+    <a href="{% url 'home' %}">홈으로</a>
+{% endblock %}
